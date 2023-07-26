@@ -1,4 +1,5 @@
 
+//26/7 : Thw Word water is not Water
 public class Pan_detail {
 
 	public static void main(String[] args) {
