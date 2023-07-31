@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+	<title>Login here</title>
+	<link rel="stylesheet" href="Login3.css">
+	<script>
+		function validateForm() {
+			var email = document.forms["registrationForm"]["ueamil"].value;
+			var dob = document.forms["registrationForm"]["udob"].value;
+			var username = document.forms["registrationForm"]["uname"].value;
+			var password = document.forms["registrationForm"]["upass"].value;
+
+			// Validate email
+			if (!email.endsWith("@gmail.com")) {
+				alert("Email must have an extension of '@gmail.com'");
+				return false;
+			}
+
+			// Validate age
+			var today = new Date();
+			var birthDate = new Date(dob);
+			var age = today.getFullYear() - birthDate.getFullYear();
+			var monthDiff = today.getMonth() - birthDate.getMonth();
+			if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+				age--;
+			}
+			if (age < 18) {
+				alert("Age must be above 18 years");
+				return false;
+			}
+
+			// Validate username
+			if (username.length < 8) {
+				alert("Username must be at least 8 characters long");
+				return false;
+			}
+
+			// Validate password (alphanumeric)
+			if (!password.match(/^[0-9a-zA-Z]+$/)) {
+				alert("Password must be alphanumeric");
+				return false;
+			}
+
+			return true;
+		}
+	</script>
+</head>
+	
+<body>
+	<h1>My Airlines</h1>
+	<hr>
+	<h2>Register Here</h2>
+	
+	<form name="registrationForm" onsubmit="return validateForm()">
+		<table style="margin-right: auto; margin-left: auto">
+			<tr>
+				<td> 
+					<label>Enter email</label> 
+				</td>
+				<td> 
+					<input type="text" name="ueamil">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label>Enter birthdate</label>
+				</td>
+				<td>
+				 	<input type="date" name="udob">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label>Enter username</label> 
+				</td>
+				<td>
+					<input type="text" name="uname">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label>Enter password</label>
+				</td>
+				<td>
+					<input type="password" name="upass">
+				</td>
+			</tr>
+			
+			<tr>
+				<td> Already Registered? Click <a href="Login3.html">Here</a></td>		
+			</tr>
+			
+			<tr>
+				<td> <button type="submit">Register</button> </td>	
+			</tr>
+			
+			<tr>
+				<td>
+					<button style="background-color: red">Clear</button>	
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
